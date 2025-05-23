@@ -10,7 +10,7 @@ connectDB();
 
 const allowedOrigins = [
     'http://localhost:3000',
-    'https://learn-x-gray.vercel.app'  // Your frontend URL
+    'https://learn-x-gray.vercel.app/api'  // Your frontend URL
 ];
 const corsOptions = {
     origin: function (origin, callback) {
