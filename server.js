@@ -8,8 +8,19 @@ import courseRoutes from './routes/courseRoutes.js';
 const app = express();
 connectDB();
 
+const allowedOrigins = [
+    'http://localhost:3000',
+    'https://learn-x-gray.vercel.app'  // Your frontend URL
+];
 const corsOptions = {
-    origin: [process.env.CLIENT_URL],
+    origin: function (origin, callback) {
+        // Check if origin is in allowedOrigins or if it's undefined (like Postman requests)
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: [
@@ -17,11 +28,9 @@ const corsOptions = {
         'X-Requested-With',
         'Content-Type',
         'Accept',
-        'Authorization',
-        'Access-Control-Allow-Headers',
-        'Access-Control-Allow-Origin',
-        'Access-Control-Allow-Methods'
-    ]
+        'Authorization'
+    ],
+    optionsSuccessStatus: 200 // Important for handling OPTIONS requests
 };
 
 app.use(cors(corsOptions));
