@@ -8,63 +8,8 @@
     ],
     "routes": [
         {
-            "src": "/api/auth/(.*)",
-            "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-            "dest": "server.js"
-        },
-        {
-            "src": "/api/courses/(.*)",
-            "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-            "dest": "server.js"
-        },
-        {
-            "src": "/api/users/(.*)",
-            "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-            "dest": "server.js"
-        },
-        {
-            "src": "/api/lessons/(.*)",
-            "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-            "dest": "server.js"
-        },
-        {
-            "src": "/api/lessons/:id",
-            "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-            "dest": "server.js"
-        },
-        {
-            "src": "/api/lessons/:id/lessons",
-            "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-            "dest": "server.js"
-        },
-        {
-            "src": "/api/lessons/:id/lessons/:lessonId",
-            "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-            "dest": "server.js"
-        },
-        {
-            "src": "/api/lessons/:id/lessons/:lessonId/lessons",
-            "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-            "dest": "server.js"
-        },
-        {
-            "src": "/api/lessons/:id/lessons/:lessonId/lessons/:lessonId",
-            "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-            "dest": "server.js"
-        },
-        {
-            "src": "/api/lessons/:id/lessons/:lessonId/lessons/:lessonId/lessons",
-            "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-            "dest": "server.js"
-        },
-        {
-            "src": "/api/lessons/:id/lessons/:lessonId/lessons/:lessonId/lessons/:lessonId",
-            "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-            "dest": "server.js"
-        },
-        {
-            "src": "/(.*)",
-            "dest": "server.js",
+            "src": "/api/(.*)",
+            "dest": "/server.js",
             "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
             "headers": {
                 "Access-Control-Allow-Origin": "*",
@@ -72,10 +17,10 @@
                 "Access-Control-Allow-Headers": "X-Requested-With, Content-Type, Accept, Authorization",
                 "Access-Control-Allow-Credentials": "true"
             }
+        },
+        {
+            "src": "/(.*)",
+            "dest": "/server.js"
         }
-    ],
-    "env": {
-        "NODE_ENV": "production",
-        "CORS_ORIGIN": "*"
-    }
+    ]
 }
