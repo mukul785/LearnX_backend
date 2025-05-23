@@ -4,7 +4,6 @@ const authenticate = (req, res, next) => {
     try {
         const authHeader = req.header('Authorization');
         console.log('Auth header:', authHeader);
-
         if (!authHeader) {
             return res.status(401).json({ error: 'No token provided' });
         }
