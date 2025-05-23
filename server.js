@@ -31,6 +31,17 @@ app.use((err, req, res, next) => {
     res.status(500).json({ error: 'Internal server error' });
 });
 
+app.get('/', (req, res) => {
+    res.json({ 
+        message: 'LearnX API is running',
+        version: '1.0.0',
+        endpoints: {
+            auth: '/api/auth',
+            courses: '/api/courses'
+        }
+    });
+});
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
