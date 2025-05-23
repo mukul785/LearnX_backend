@@ -10,7 +10,7 @@ connectDB();
 
 const allowedOrigins = [
     'http://localhost:3000',
-    'https://learn-x-gray.vercel.app/api'  // Your frontend URL
+    'https://learn-x-gray.vercel.app'  // Your frontend URL
 ];
 const corsOptions = {
     origin: function (origin, callback) {
@@ -36,19 +36,6 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 
-app.options('*', cors(corsOptions));
-
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', req.headers.origin);
-    res.header('Access-Control-Allow-Credentials', 'true');
-    res.header('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
-    
-    if (req.method === 'OPTIONS') {
-        return res.status(200).end();
-    }
-    next();
-});
 
 app.get('/', (req, res) => {
     res.json({ 
