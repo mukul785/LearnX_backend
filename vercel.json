@@ -8,15 +8,25 @@
     ],
     "routes": [
         {
-            "src": "/api/(.*)",
-            "dest": "server.js"
+            "src": "/api/auth/(.*)",
+            "dest": "/server.js"
+        },
+        {
+            "src": "/api/courses/(.*)",
+            "dest": "/server.js"
         },
         {
             "src": "/(.*)",
-            "dest": "server.js"
+            "headers": {
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+                "Access-Control-Allow-Headers": "X-Requested-With, Content-Type, Accept, Authorization"
+            },
+            "dest": "/server.js"
         }
     ],
     "env": {
-        "NODE_ENV": "production"
+        "NODE_ENV": "production",
+        "CORS_ORIGIN": "*"
     }
 }
